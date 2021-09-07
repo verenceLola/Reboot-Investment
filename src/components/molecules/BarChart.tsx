@@ -27,7 +27,7 @@ export const BarChart = (): ReactElement | null => {
 
     const options: ApexOptions = {
         title: {
-            text: `${selectedTicker} Share Volume`,
+            text: `${selectedTicker} Shares Volume`,
             align: "center",
             margin: 10,
             offsetX: 0,
@@ -46,5 +46,5 @@ export const BarChart = (): ReactElement | null => {
         return null;
     }
 
-    return <Chart type="bar" options={options} series={series} />;
+    return <Chart type="bar" height="100%" options={options} series={series} />;
 };

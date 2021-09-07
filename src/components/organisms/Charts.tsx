@@ -14,21 +14,22 @@ export const Charts = ({
     endDate,
     interval,
 }: IProps): ReactElement => (
-    <Box padding={3}>
+    <Box paddingX={3} height="100%">
         <Grid
             container
             alignContent="center"
             justifyContent="center"
             direction="column"
+            style={{ height: "100%" }}
         >
-            <Grid item style={{ width: "100%" }}>
+            <Grid item style={{ width: "100%", flexGrow: 0.6 }}>
                 <CandleStickChart
                     startDate={startDate}
                     endDate={endDate}
                     interval={interval}
                 />
             </Grid>
-            <Grid item>
+            <Grid item style={{ flexGrow: 0.4 }}>
                 <BarChart />
             </Grid>
         </Grid>

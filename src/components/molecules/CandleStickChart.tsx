@@ -71,8 +71,8 @@ export const CandleStickChart = ({
 
     return (
         <Chart
-            height={750}
-            width="100%"
+            height="100%"
+            // width="100%"
             type="candlestick"
             series={series}
             options={options}

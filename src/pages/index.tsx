@@ -12,9 +12,9 @@ const IndexPage = (): ReactElement => {
     const [interval, setInterval] = useState<"1d" | "1mo" | "1w">("1d");
 
     return (
-        <Container maxWidth={false}>
-            <Box padding={4}>
-                <Grid container direction="column">
+        <Container maxWidth={false} style={{ height: "100%" }}>
+            <Box paddingX={4} style={{ height: "100%" }}>
+                <Grid container direction="column" style={{ height: "100%" }}>
                     <Grid item>
                         <Header
                             onStartDateChange={(date: Date | null) =>
@@ -31,7 +31,7 @@ const IndexPage = (): ReactElement => {
                             }
                         />
                     </Grid>
-                    <Grid item>
+                    <Grid item style={{ flexGrow: 1 }}>
                         <Charts
                             startDate={startDate}
                             endDate={endDate}
