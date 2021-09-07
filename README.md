@@ -10,6 +10,12 @@ clone the repo. Run the following command
 yarn start
 ```
 
+Sample `.env` file
+
+```bash
+REACT_APP_API_URL=http://localhost:8001/api
+```
+
 ## Viewing the Application Online
 
 [Netlify Link](https://6137d45eff3ce70097509453--happy-hugle-cefd93.netlify.app/)
