@@ -14,6 +14,7 @@ interface IInitialState {
     params: {
         startDate?: string;
         endDate?: string;
+        interval?: "1d" | "1mo" | "1w";
     };
 }
 
@@ -31,7 +32,13 @@ const statsSlice = createSlice({
         },
         loadStats: (
             state,
-            { payload }: PayloadAction<{ startDate: string; endDate: string }>
+            {
+                payload,
+            }: PayloadAction<{
+                startDate: string;
+                endDate: string;
+                interval: "1d" | "1mo" | "1w";
+            }>
         ) => {
             state.params = payload;
         },

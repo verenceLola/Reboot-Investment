@@ -24,14 +24,15 @@ function* handleLoadTickerStats(): Generator<
             (state: RootState) => state.tickers.selectedTicker
         );
         const params = yield select((state: RootState) => state.stats.params);
-        const { startDate, endDate } = params as {
+        const { startDate, endDate, interval } = params as {
             startDate: string;
             endDate: string;
+            interval: "1d" | "1mo" | "1w";
         };
 
         const requestData = {
             ticker: tickerSymbol as string,
-            ...{ start_date: startDate, end_date: endDate },
+            ...{ start_date: startDate, end_date: endDate, interval },
         };
 
         yield put(loadingStats(true));

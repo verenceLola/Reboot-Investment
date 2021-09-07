@@ -6,6 +6,7 @@ interface TickerStatsData {
     ticker: string;
     start_date: string;
     end_date: string;
+    interval: "1d" | "1mo" | "1w";
 }
 
 export const requestTickerStats = (

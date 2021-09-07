@@ -1,15 +1,15 @@
 import React, { ReactElement, useState } from "react";
-
+import { subMonths } from "date-fns";
 import { Box, Container, Grid } from "@material-ui/core";
-import { CandleStickChart } from "../components/molecules";
-import { Header } from "../components/organisms";
-import { subDays } from "date-fns";
 
-const LAST_WEEK = subDays(new Date(), 7);
+import { Charts, Header } from "../components/organisms";
+
+const LAST_MONTH = subMonths(new Date(), 1);
 
 const IndexPage = (): ReactElement => {
-    const [startDate, setStartDate] = useState<Date | null>(LAST_WEEK);
+    const [startDate, setStartDate] = useState<Date | null>(LAST_MONTH);
     const [endDate, setEndDate] = useState<Date | null>(new Date());
+    const [interval, setInterval] = useState<"1d" | "1mo" | "1w">("1d");
 
     return (
         <Container maxWidth={false}>
@@ -25,12 +25,17 @@ const IndexPage = (): ReactElement => {
                             }
                             startDate={startDate}
                             endDate={endDate}
+                            interval={interval}
+                            onChangeInterval={(value: "1d" | "1mo" | "1w") =>
+                                setInterval(value)
+                            }
                         />
                     </Grid>
                     <Grid item>
-                        <CandleStickChart
+                        <Charts
                             startDate={startDate}
                             endDate={endDate}
+                            interval={interval}
                         />
                     </Grid>
                 </Grid>

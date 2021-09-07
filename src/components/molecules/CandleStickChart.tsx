@@ -7,11 +7,13 @@ import { DateUtils, useAppDispatch, useAppSelector } from "../../utils";
 interface IProps {
     startDate: Date | null;
     endDate: Date | null;
+    interval: "1d" | "1mo" | "1w";
 }
 
 export const CandleStickChart = ({
     startDate,
     endDate,
+    interval,
 }: IProps): ReactElement | null => {
     const { selectedTicker } = useAppSelector((state) => state.tickers);
     const { stats } = useAppSelector((state) => state.stats);
@@ -23,10 +25,11 @@ export const CandleStickChart = ({
                 loadStats({
                     startDate: startDate.toUTCString(),
                     endDate: endDate.toUTCString(),
+                    interval,
                 })
             );
         }
-    }, [selectedTicker, startDate, endDate]);
+    }, [selectedTicker, startDate, endDate, interval]);
 
     const series = useMemo(() => {
         if (stats) {
@@ -66,5 +69,13 @@ export const CandleStickChart = ({
         return null;
     }
 
-    return <Chart type="candlestick" series={series} options={options} />;
+    return (
+        <Chart
+            height={750}
+            width="100%"
+            type="candlestick"
+            series={series}
+            options={options}
+        />
+    );
 };
