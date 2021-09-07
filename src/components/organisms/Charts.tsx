@@ -28,7 +28,9 @@ export const Charts = ({
                     interval={interval}
                 />
             </Grid>
-            <Grid item>{/* <BarChart /> */}</Grid>
+            <Grid item>
+                <BarChart />
+            </Grid>
         </Grid>
     </Box>
 );
