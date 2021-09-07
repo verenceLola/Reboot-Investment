@@ -9,7 +9,7 @@ interface InitialState {
 const initialState: InitialState = {
     tickers: [],
     loading: false,
-    selectedTicker: "",
+    selectedTicker: "AAPL",
 };
 
 const tickersSlice = createSlice({

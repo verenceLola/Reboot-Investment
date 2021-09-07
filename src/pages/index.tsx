@@ -1,7 +1,7 @@
 import React, { ReactElement } from "react";
 
-import { Box, Container, Grid, Typography } from "@material-ui/core";
-import { Tickers } from "../components/molecules";
+import { Box, Container, Grid } from "@material-ui/core";
+import { CandleStickChart, Tickers } from "../components/molecules";
 
 const IndexPage = (): ReactElement => (
     <Container maxWidth={false}>
@@ -11,7 +11,7 @@ const IndexPage = (): ReactElement => (
                     <Tickers />
                 </Grid>
                 <Grid item>
-                    <Typography variant="h3">Charts Here</Typography>
+                    <CandleStickChart />
                 </Grid>
             </Grid>
         </Box>

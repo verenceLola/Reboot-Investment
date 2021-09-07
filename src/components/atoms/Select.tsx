@@ -10,6 +10,7 @@ interface IProps {
     onClose: () => void;
     value: string;
     onChange: (value?: string) => void;
+    label: string;
 }
 
 export const Select = ({
@@ -20,6 +21,7 @@ export const Select = ({
     isOpen,
     value,
     onChange,
+    label,
 }: IProps): ReactElement => (
     <Autocomplete
         style={{ width: 300 }}
@@ -35,7 +37,7 @@ export const Select = ({
         renderInput={(params) => (
             <TextField
                 {...params}
-                label="Select an Option"
+                label={label}
                 variant="outlined"
                 InputProps={{
                     ...params.InputProps,

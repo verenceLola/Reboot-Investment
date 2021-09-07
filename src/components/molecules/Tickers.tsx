@@ -37,6 +37,7 @@ export const Tickers = (): ReactElement => {
             isOpen={isSelectOpen}
             onClose={onClose}
             options={tickers}
+            label="Select a Stock"
         />
     );
 };

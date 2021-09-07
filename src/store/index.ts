@@ -2,13 +2,14 @@ import createSagaMiddleware from "@redux-saga/core";
 import { configureStore } from "@reduxjs/toolkit";
 import rootSaga from "./sagas/RootSaga";
 
-import { reducer as tickersReducer } from "./slices";
+import { tickersReducer, statReducer } from "./slices";
 
 const sagaMiddleware = createSagaMiddleware();
 
 export const store = configureStore({
     reducer: {
         tickers: tickersReducer,
+        stats: statReducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(sagaMiddleware),
