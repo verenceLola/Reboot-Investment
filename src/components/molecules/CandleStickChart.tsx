@@ -4,14 +4,29 @@ import Chart from "react-apexcharts";
 import { loadStats } from "../../store/slices";
 import { DateUtils, useAppDispatch, useAppSelector } from "../../utils";
 
-export const CandleStickChart = (): ReactElement | null => {
+interface IProps {
+    startDate: Date | null;
+    endDate: Date | null;
+}
+
+export const CandleStickChart = ({
+    startDate,
+    endDate,
+}: IProps): ReactElement | null => {
     const { selectedTicker } = useAppSelector((state) => state.tickers);
     const { stats } = useAppSelector((state) => state.stats);
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        dispatch(loadStats());
-    }, [selectedTicker]);
+        if (startDate && endDate) {
+            dispatch(
+                loadStats({
+                    startDate: startDate.toUTCString(),
+                    endDate: endDate.toUTCString(),
+                })
+            );
+        }
+    }, [selectedTicker, startDate, endDate]);
 
     const series = useMemo(() => {
         if (stats) {

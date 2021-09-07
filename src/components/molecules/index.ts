@@ -1,2 +1,2 @@
-export { Tickers } from "./Tickers";
+export { TickersSelect } from "./TickersSelect";
 export { CandleStickChart } from "./CandleStickChart";

@@ -23,12 +23,19 @@ function* handleLoadTickerStats(): Generator<
         const tickerSymbol = yield select(
             (state: RootState) => state.tickers.selectedTicker
         );
-        yield put(loadingStats(true));
-        const response = yield call(requestTickerStats, {
+        const params = yield select((state: RootState) => state.stats.params);
+        const { startDate, endDate } = params as {
+            startDate: string;
+            endDate: string;
+        };
+
+        const requestData = {
             ticker: tickerSymbol as string,
-            start_date: "2021-07-01",
-            end_date: "2021-08-05",
-        });
+            ...{ start_date: startDate, end_date: endDate },
+        };
+
+        yield put(loadingStats(true));
+        const response = yield call(requestTickerStats, requestData);
 
         const { data } = response as AxiosResponse<IStat>;
         yield put(setStats(data));

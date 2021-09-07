@@ -11,10 +11,15 @@ export interface IStat {
 interface IInitialState {
     loading: boolean;
     stats?: Record<string, Record<string, number>>[];
+    params: {
+        startDate?: string;
+        endDate?: string;
+    };
 }
 
 const initialState: IInitialState = {
     loading: false,
+    params: {},
 };
 
 const statsSlice = createSlice({
@@ -24,7 +29,12 @@ const statsSlice = createSlice({
         loadingStats: (state, action: PayloadAction<boolean>) => {
             state.loading = action.payload;
         },
-        loadStats: () => {},
+        loadStats: (
+            state,
+            { payload }: PayloadAction<{ startDate: string; endDate: string }>
+        ) => {
+            state.params = payload;
+        },
         setStats: (state, { payload }: PayloadAction<IStat>) => {
             const series = Object.keys(payload.open).map((key) => ({
                 [key]: {

@@ -4,7 +4,7 @@ import { loadTickers, setSelectedTicker } from "../../store/slices";
 import { useAppDispatch, useAppSelector } from "../../utils";
 import { Select } from "../atoms";
 
-export const Tickers = (): ReactElement => {
+export const TickersSelect = (): ReactElement => {
     const [isSelectOpen, setIsSelectOpen] = useState<boolean>(false);
 
     const dispatch = useAppDispatch();

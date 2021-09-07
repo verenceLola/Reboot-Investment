@@ -1,7 +1,6 @@
 export class DateUtils {
     public static formatDate = (timestamp: number): string => {
         const options: Intl.DateTimeFormatOptions = {
-            weekday: "long",
             year: "numeric",
             month: "long",
             day: "numeric",
